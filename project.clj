@@ -1,9 +1,9 @@
 (defproject butler "0.1.0-SNAPSHOT"
-  :description "A minimal ClojureScript library for Web Workers"
-  :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/clojurescript "0.0-2202"]]
+  :description "A ClojureScript library for Web Workers"
+  :url "https://github.com/federkasten/butler"
   :plugins [[lein-cljsbuild "1.0.3"]]
-  :profiles {:dev {:plugins [[com.cemerick/austin "0.1.4"]]}}
+  :profiles {:dev {:dependencies [[org.clojure/clojure "1.6.0"]
+                                  [org.clojure/clojurescript "0.0-2227"]]}}
   :source-paths ["src"]
   :cljsbuild {:builds
               {:dev
