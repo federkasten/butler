@@ -4,6 +4,12 @@ A ClojureScript library for Web Workers
 
 ## Usage
 
+Add the following dependency to your `project.clj`:
+
+```
+[butler "0.1.0-SNAPSHOT"]
+```
+
 TODO
 
 ## License
