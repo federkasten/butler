@@ -1,11 +1,11 @@
-(defproject butler "0.1.0-SNAPSHOT"
+(defproject butler "0.2.0-SNAPSHOT"
   :description "A ClojureScript library for Web Workers"
   :url "https://github.com/federkasten/butler"
   :license {:name "Apache License, Version 2.0"
             :url "http://www.apache.org/licenses/LICENSE-2.0.html"}
-  :plugins [[lein-cljsbuild "1.0.3"]]
-  :profiles {:dev {:dependencies [[org.clojure/clojure "1.6.0"]
-                                  [org.clojure/clojurescript "0.0-2261"]]}}
+  :profiles {:dev {:dependencies [[org.clojure/clojure "1.7.0"]
+                                  [org.clojure/clojurescript "1.7.122"]]
+                   :plugins [[lein-cljsbuild "1.1.0"]]}}
   :source-paths ["src"]
   :cljsbuild {:builds
               {:dev
