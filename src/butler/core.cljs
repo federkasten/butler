@@ -21,7 +21,7 @@
     (.addEventListener w event-message
                        (fn [e]
                          (let [o (deserialize (.-data e))]
-                           (when-let [handler (get handlers (:name o) nil)]
+                           (when-let [handler (get handlers (keyword (:name o)) nil)]
                              (handler (:data o))))))
     {:worker w}))
 
@@ -42,7 +42,7 @@
   (.addEventListener js/self event-message
                      (fn [e]
                        (let [o (deserialize (.-data e))]
-                         (when-let [handler (get handlers (:name o) nil)]
+                         (when-let [handler (get handlers (keyword (:name o)) nil)]
                            (handler (:data o)))))))
 
 (defn bring!
