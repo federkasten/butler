@@ -4,7 +4,8 @@
   :license {:name "Apache License, Version 2.0"
             :url "http://www.apache.org/licenses/LICENSE-2.0.html"}
   :profiles {:dev {:dependencies [[org.clojure/clojure "1.7.0"]
-                                  [org.clojure/clojurescript "1.7.122"]]
+                                  [org.clojure/clojurescript "1.7.122"]
+                                  [com.cognitect/transit-cljs "0.8.225"]]
                    :plugins [[lein-cljsbuild "1.1.0"]]}}
   :source-paths ["src"]
   :cljsbuild {:builds

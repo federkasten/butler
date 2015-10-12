@@ -1,4 +1,5 @@
-(ns butler.core)
+(ns butler.core
+  (:require [cognitect.transit :as t]))
 
 (defn webworker? []
   (undefined? (.-document js/self)))
@@ -9,11 +10,13 @@
 
 (defn- deserialize
   [data]
-  (js->clj (.parse js/JSON data) :keywordize-keys true))
+  (let [r (t/reader :json)]
+    (t/read r data)))
 
 (defn- serialize
   [data]
-  (.stringify js/JSON (clj->js data)))
+  (let [w (t/writer :json)]
+    (t/write w data)))
 
 (defn butler
   [script handlers]
