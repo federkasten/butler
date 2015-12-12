@@ -14,7 +14,7 @@ Add the following dependency to your `project.clj`:
 
 ### Example
 
-Create web workers and define handlers in main thread, and tell to workers via `work!` function;
+Create web workers and define its response handlers in main thread, and tell to workers via `work!`;
 
 ```clj
 (require '[butler.core :as butler])
@@ -28,7 +28,7 @@ Create web workers and define handlers in main thread, and tell to workers via `
 (butler/work! example-butler :request-foo "foo")
 ```
 
-In worker threads, define handlers of requests, and send results to the main thread using `bring` function;
+In worker threads, define handlers of requests using `serve!` and send results to the main thread using `bring`;
 
 ```clj
 (require '[butler.core :as butler])

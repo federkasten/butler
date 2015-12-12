@@ -5,16 +5,16 @@
 (enable-console-print!)
 
 (defn uppercase-handler [str]
-  (butler/bring! :print-str (string/upper-case str)))
+  (butler/bring! :print-string (string/upper-case str)))
 
 (defn repeat-handler [{:keys [repeated times]}]
-  (butler/bring! :print-str (apply str (repeat times repeated))))
+  (butler/bring! :print-string (apply str (repeat times repeated))))
 
 (defn increment-handler [_ {:keys [array-buffer]}]
   (let [arr (js/Float32Array. array-buffer)]
     (doseq [i (range (.-length arr))]
       (aset arr i (inc (aget arr i))))
-    (butler/bring! :print-arr nil {:array-buffer (.-buffer arr)})))
+    (butler/bring! :print-array nil {:array-buffer (.-buffer arr)})))
 
 (def handlers {:request-uppercase uppercase-handler
                :request-repeat repeat-handler
