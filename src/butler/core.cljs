@@ -22,10 +22,10 @@
   (into {} (for [[k v] m] [(f k) v])))
 
 (defn- message-handler [handlers e]
-  (let [deserialized (deserialize (.-serialized (.-data e)))
+  (let [deserialized (deserialize (aget (.-data e) "serialized"))
         name (keyword (:name deserialized))
         data (:data deserialized)
-        transferables (map-key deserialize (js->clj (.-transferables (.-data e))))
+        transferables (map-key deserialize (js->clj (aget (.-data e) "transferables")))
         copied (reduce #(assoc-in %1 (first %2) (second %2)) data transferables)]
     (when-let [handler (get handlers name)]
       (handler copied))))
