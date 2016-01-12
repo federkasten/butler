@@ -36,7 +36,7 @@
         serialized (serialize {:name name :data without-transferables})
         copying (clj->js {"serialized" serialized
                           "transferables" transferables})]
-    (.postMessage worker copying (clj->js (vals transferables)))))
+    (.postMessage worker copying (clj->js (or (vals transferables) [])))))
 
 (defn butler
   [script handlers]
