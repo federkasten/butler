@@ -50,7 +50,7 @@
   ([b name copying-data transferable-keys]
    (post-message! (:worker b) name copying-data transferable-keys))
   ([b name copying-data]
-   (work! b name copying-data {}))
+   (work! b name copying-data []))
   ([b name]
    (work! b name nil)))
 
@@ -64,7 +64,6 @@
   ([name copying-data transferable-keys]
    (post-message! js/self name copying-data transferable-keys))
   ([name copying-data]
-   (bring! name copying-data {}))
+   (bring! name copying-data []))
   ([name]
    (bring! name nil)))
-

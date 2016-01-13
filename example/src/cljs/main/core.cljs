@@ -32,5 +32,5 @@
 (butler/work! example-butler :request-add
               {:array-buffer (.-buffer (js/Float32Array. #js [1 2 3 4 5 6 7 8]))
                :nested-map {:nested-buffer (.-buffer (js/Float32Array. #js [1 2 4 8 16 32 64 128]))}}
-              [[:array-buffer] [:nested-map :nested-buffer]])
-
+              [[:array-buffer]
+               [:nested-map :nested-buffer]])
