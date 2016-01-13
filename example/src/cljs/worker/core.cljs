@@ -10,14 +10,15 @@
 (defn repeat-handler [{:keys [repeated times]}]
   (butler/bring! :print-string (apply str (repeat times repeated))))
 
-(defn increment-handler [_ {:keys [array-buffer]}]
-  (let [arr (js/Float32Array. array-buffer)]
-    (doseq [i (range (.-length arr))]
-      (aset arr i (inc (aget arr i))))
-    (butler/bring! :print-array nil {:array-buffer (.-buffer arr)})))
+(defn add-handler [{:keys [array-buffer nested-map]}]
+  (let [array (js/Float32Array. array-buffer)
+        nested (js/Float32Array. (nested-map :nested-buffer))]
+    (doseq [i (range (.-length array))]
+      (aset array i (+ (aget array i) (aget nested i))))
+    (butler/bring! :print-array {:array-buffer (.-buffer array)} [[:array-buffer]])))
 
 (def handlers {:request-uppercase uppercase-handler
                :request-repeat repeat-handler
-               :request-increment increment-handler})
+               :request-add add-handler})
 
 (butler/serve! handlers)

@@ -22,19 +22,21 @@
   (into {} (for [[k v] m] [(f k) v])))
 
 (defn- message-handler [handlers e]
-  (let [o (deserialize (.-serialized (.-data e)))
-        transferables (map-key deserialize (js->clj (.-transferables (.-data e))))]
-    (when-let [handler (get handlers (keyword (:name o)) nil)]
-      (if (< 0 (count transferables))
-        (handler (:data o) transferables)
-        (handler (:data o))))))
+  (let [deserialized (deserialize (aget (.-data e) "serialized"))
+        name (keyword (:name deserialized))
+        data (:data deserialized)
+        transferables (map-key deserialize (js->clj (aget (.-data e) "transferables")))
+        copied (reduce #(assoc-in %1 (first %2) (second %2)) data transferables)]
+    (when-let [handler (get handlers name)]
+      (handler copied))))
 
-(defn- post-message! [worker name copying-data transferable-map]
-  (let [serialized-data (serialize {:name name :data copying-data})
-        serialized-map (map-key serialize transferable-map)
-        copying (clj->js {"serialized" serialized-data
-                          "transferables" serialized-map})]
-    (.postMessage worker copying (clj->js (vals transferable-map)))))
+(defn- post-message! [worker name copying-data transferable-keys]
+  (let [without-transferables (reduce #(assoc-in %1 %2 nil) copying-data transferable-keys)
+        transferables (into {} (map (fn [key] [(serialize key) (get-in copying-data key)]) transferable-keys))
+        serialized (serialize {:name name :data without-transferables})
+        copying (clj->js {"serialized" serialized
+                          "transferables" transferables})]
+    (.postMessage worker copying (clj->js (or (vals transferables) [])))))
 
 (defn butler
   [script handlers]
@@ -45,10 +47,10 @@
 ;; for owner
 
 (defn work!
-  ([b name copying-data transferable-map]
-   (post-message! (:worker b) name copying-data transferable-map))
+  ([b name copying-data transferable-keys]
+   (post-message! (:worker b) name copying-data transferable-keys))
   ([b name copying-data]
-   (work! b name copying-data {}))
+   (work! b name copying-data []))
   ([b name]
    (work! b name nil)))
 
@@ -59,8 +61,9 @@
   (.addEventListener js/self event-message (partial message-handler handlers)))
 
 (defn bring!
-  ([name copying-data transferable-map]
-   (post-message! js/self name copying-data transferable-map))
+  ([name copying-data transferable-keys]
+   (post-message! js/self name copying-data transferable-keys))
   ([name copying-data]
-   (bring! name copying-data {})))
-
+   (bring! name copying-data []))
+  ([name]
+   (bring! name nil)))
