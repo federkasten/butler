@@ -1,4 +1,4 @@
-(defproject butler "0.2.0"
+(defproject butler "0.2.1-SNAPSHOT"
   :description "ClojureScript library for Web Workers"
   :url "https://github.com/federkasten/butler"
   :license {:name "Apache License, Version 2.0"
