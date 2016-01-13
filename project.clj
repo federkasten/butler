@@ -1,4 +1,4 @@
-(defproject butler "0.2.0-SNAPSHOT"
+(defproject butler "0.2.0"
   :description "ClojureScript library for Web Workers"
   :url "https://github.com/federkasten/butler"
   :license {:name "Apache License, Version 2.0"
@@ -22,4 +22,5 @@
                 :jar true
                 :compiler {:output-to "target/gen/butler.js"
                            :optimizations :advanced
-                           :pretty-print true}}}})
+                           :pretty-print true}}}}
+  :signing {:gpg-key "me@tak.sh"})

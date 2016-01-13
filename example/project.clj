@@ -5,7 +5,7 @@
             :url "http://www.apache.org/licenses/LICENSE-2.0.html"}
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [org.clojure/clojurescript "1.7.189"]
-                 [butler "0.2.0-SNAPSHOT"]]
+                 [butler "0.2.0"]]
   :plugins [[lein-cljsbuild "1.1.1"]]
   :source-paths ["src/cljs/main" "src/cljs/worker"]
   :clean-targets ^{:protect false} [:target-path

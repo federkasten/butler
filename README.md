@@ -10,7 +10,9 @@ ClojureScript library for Web Workers
 
 Add the following dependency to your `project.clj`:
 
-[![Clojars Project](http://clojars.org/butler/latest-version.svg)](http://clojars.org/butler)
+```
+[butler "0.2.0"]
+```
 
 ### Example
 
