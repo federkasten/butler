@@ -1,5 +1,5 @@
 (defproject butler "0.2.1-SNAPSHOT"
-  :description "ClojureScript library for Web Workers"
+  :description "Bring Web Workers to ClojureScript"
   :url "https://github.com/federkasten/butler"
   :license {:name "Apache License, Version 2.0"
             :url "http://www.apache.org/licenses/LICENSE-2.0.html"}

@@ -48,9 +48,9 @@ See [example](https://github.com/federkasten/butler/tree/master/example) for mor
 
 ## License
 
-Copyright 2014 [Takashi AOKI][federkasten]
+Copyright [Takashi AOKI][tak.sh] and other contributors.
 
 Licensed under the [Apache License, Version 2.0][apache-license-2.0].
 
-[federkasten]: http://tak.sh
+[tak.sh]: http://tak.sh
 [apache-license-2.0]: http://www.apache.org/licenses/LICENSE-2.0.html
