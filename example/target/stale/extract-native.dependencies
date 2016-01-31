@@ -1,1 +1,0 @@
-([:dependencies ([org.clojure/clojure "1.7.0"] [org.clojure/clojurescript "1.7.189"] [butler/butler "0.2.0"] [org.clojure/tools.nrepl "0.2.10" :exclusions ([org.clojure/clojure])] [clojure-complete/clojure-complete "0.2.3" :exclusions ([org.clojure/clojure])])])

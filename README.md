@@ -1,6 +1,6 @@
 # butler
 
-ClojureScript library for Web Workers
+Bring Web Workers to ClojureScript
 
 - Simple API
 - Suitable for Clojure data structure
@@ -36,6 +36,7 @@ In worker threads, define handlers of requests using `serve!` and send results t
 (require '[butler.core :as butler])
 
 (defn run-foo [req]
+  ;; some heavy heavy jobs
   (butler/bring! :foo "hello"))
 
 (def handlers {:request-foo run-foo})
