@@ -3,10 +3,10 @@
   :url "https://github.com/federkasten/butler/example"
   :license {:name "Apache License, Version 2.0"
             :url "http://www.apache.org/licenses/LICENSE-2.0.html"}
-  :dependencies [[org.clojure/clojure "1.7.0"]
-                 [org.clojure/clojurescript "1.7.189"]
-                 [butler "0.2.0"]]
-  :plugins [[lein-cljsbuild "1.1.1"]]
+  :dependencies [[org.clojure/clojure "1.12.1"]
+                 [org.clojure/clojurescript "1.11.132"]
+                 [butler "0.2.1-SNAPSHOT"]]
+  :plugins [[lein-cljsbuild "1.1.8"]]
   :source-paths ["src/cljs/main" "src/cljs/worker"]
   :clean-targets ^{:protect false} [:target-path
                                     :compile-path
