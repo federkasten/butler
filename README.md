@@ -1,5 +1,9 @@
 # butler
 
+[![CI](https://github.com/federkasten/butler/workflows/CI/badge.svg)](https://github.com/federkasten/butler/actions/workflows/ci.yml)
+[![Test](https://github.com/federkasten/butler/workflows/Test/badge.svg)](https://github.com/federkasten/butler/actions/workflows/test.yml)
+[![Clojars Project](https://img.shields.io/clojars/v/butler.svg)](https://clojars.org/butler)
+
 Bring Web Workers to ClojureScript
 
 - Simple API
@@ -45,6 +49,38 @@ In worker threads, define handlers of requests using `serve!` and send results t
 ```
 
 See [example](https://github.com/federkasten/butler/tree/master/example) for more details.
+
+## Development
+
+### Running Tests
+
+The project includes a comprehensive test suite that can be run with:
+
+```bash
+lein doo node test once
+```
+
+Or for continuous testing:
+
+```bash
+lein doo node test auto
+```
+
+### Building
+
+Build all targets:
+
+```bash
+lein cljsbuild once dev    # Development build
+lein cljsbuild once prod   # Production build
+lein cljsbuild once test   # Test build
+```
+
+### Requirements
+
+- Java 17 or later
+- Leiningen 2.9.0 or later
+- Node.js 18 or later (for running tests)
 
 ## License
 
